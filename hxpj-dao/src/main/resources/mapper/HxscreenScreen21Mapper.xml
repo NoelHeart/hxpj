@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HxscreenScreen21Mapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HxscreenScreen21">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="times" jdbcType="VARCHAR" property="times" />
+    <result column="ele_mon" jdbcType="VARCHAR" property="eleMon" />
+    <result column="ele_year" jdbcType="VARCHAR" property="eleYear" />
+    <result column="water_mon" jdbcType="VARCHAR" property="waterMon" />
+    <result column="water_year" jdbcType="VARCHAR" property="waterYear" />
+    <result column="content_mon" jdbcType="VARCHAR" property="contentMon" />
+    <result column="content_year" jdbcType="VARCHAR" property="contentYear" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, times, ele_mon, ele_year, water_mon, water_year, content_mon, content_year
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hxscreen_screen2_1
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM hxscreen_screen2_1
+  </select>
+    <select id="selectLast" resultMap="BaseResultMap">
+      SELECT
+      <include refid="Base_Column_List"/>
+      FROM hxscreen_screen2_1
+      ORDER BY id DESC limit 1
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hxscreen_screen2_1
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HxscreenScreen21">
+    insert into hxscreen_screen2_1
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="times != null">
+        times,
+      </if>
+      <if test="eleMon != null">
+        ele_mon,
+      </if>
+      <if test="eleYear != null">
+        ele_year,
+      </if>
+      <if test="waterMon != null">
+        water_mon,
+      </if>
+      <if test="waterYear != null">
+        water_year,
+      </if>
+      <if test="contentMon != null">
+        content_mon,
+      </if>
+      <if test="contentYear != null">
+        content_year,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="times != null">
+        #{times,jdbcType=VARCHAR},
+      </if>
+      <if test="eleMon != null">
+        #{eleMon,jdbcType=VARCHAR},
+      </if>
+      <if test="eleYear != null">
+        #{eleYear,jdbcType=VARCHAR},
+      </if>
+      <if test="waterMon != null">
+        #{waterMon,jdbcType=VARCHAR},
+      </if>
+      <if test="waterYear != null">
+        #{waterYear,jdbcType=VARCHAR},
+      </if>
+      <if test="contentMon != null">
+        #{contentMon,jdbcType=VARCHAR},
+      </if>
+      <if test="contentYear != null">
+        #{contentYear,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HxscreenScreen21">
+    update hxscreen_screen2_1
+    <set>
+      <if test="times != null">
+        times = #{times,jdbcType=VARCHAR},
+      </if>
+      <if test="eleMon != null">
+        ele_mon = #{eleMon,jdbcType=VARCHAR},
+      </if>
+      <if test="eleYear != null">
+        ele_year = #{eleYear,jdbcType=VARCHAR},
+      </if>
+      <if test="waterMon != null">
+        water_mon = #{waterMon,jdbcType=VARCHAR},
+      </if>
+      <if test="waterYear != null">
+        water_year = #{waterYear,jdbcType=VARCHAR},
+      </if>
+      <if test="contentMon != null">
+        content_mon = #{contentMon,jdbcType=VARCHAR},
+      </if>
+      <if test="contentYear != null">
+        content_year = #{contentYear,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

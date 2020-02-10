@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hxpj.iml" filepath="$PROJECT_DIR$/hxpj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hxpj-boot/hxpj-boot.iml" filepath="$PROJECT_DIR$/hxpj-boot/hxpj-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hxpj-common/hxpj-common.iml" filepath="$PROJECT_DIR$/hxpj-common/hxpj-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hxpj-core/hxpj-core.iml" filepath="$PROJECT_DIR$/hxpj-core/hxpj-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hxpj-dao/hxpj-dao.iml" filepath="$PROJECT_DIR$/hxpj-dao/hxpj-dao.iml" />
+    </modules>
+  </component>
+</project>

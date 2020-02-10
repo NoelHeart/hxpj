@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HoneycombWaterMeterMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HoneycombWaterMeter">
+    <id column="device_id" jdbcType="VARCHAR" property="deviceId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    device_id, title, type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from honeycomb_water_meter
+    where device_id = #{deviceId,jdbcType=VARCHAR}
+  </select>
+    <select id="findAll" resultMap="BaseResultMap">
+      SELECT
+      <include refid="Base_Column_List"/>
+      FROM honeycomb_water_meter
+      <if test="deviceId != null and deviceId != ''">
+        WHERE device_id LIKE CONCAT('%',#{deviceId},'%')
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from honeycomb_water_meter
+    where device_id = #{deviceId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.biye.hxpj.model.HoneycombWaterMeter">
+    insert into honeycomb_water_meter (device_id, title, type
+      )
+    values (#{deviceId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HoneycombWaterMeter">
+    insert into honeycomb_water_meter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HoneycombWaterMeter">
+    update honeycomb_water_meter
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where device_id = #{deviceId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biye.hxpj.model.HoneycombWaterMeter">
+    update honeycomb_water_meter
+    set title = #{title,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR}
+    where device_id = #{deviceId,jdbcType=VARCHAR}
+  </update>
+</mapper>

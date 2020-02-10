@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HxscreenScreen24TodayMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HxscreenScreen24Today">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="times" jdbcType="VARCHAR" property="times" />
+    <result column="today_use" jdbcType="VARCHAR" property="todayUse" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, times, today_use
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hxscreen_screen2_4_today
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM hxscreen_screen2_4_today
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hxscreen_screen2_4_today
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HxscreenScreen24Today">
+    insert into hxscreen_screen2_4_today
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="times != null">
+        times,
+      </if>
+      <if test="todayUse != null">
+        today_use,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="times != null">
+        #{times,jdbcType=VARCHAR},
+      </if>
+      <if test="todayUse != null">
+        #{todayUse,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HxscreenScreen24Today">
+    update hxscreen_screen2_4_today
+    <set>
+      <if test="times != null">
+        times = #{times,jdbcType=VARCHAR},
+      </if>
+      <if test="todayUse != null">
+        today_use = #{todayUse,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

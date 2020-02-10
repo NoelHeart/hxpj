@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HxscreenWaterMonthlyuseMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HxscreenWaterMonthlyuse">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="building1_use" jdbcType="VARCHAR" property="building1Use" />
+    <result column="building2_use" jdbcType="VARCHAR" property="building2Use" />
+    <result column="building3_use" jdbcType="VARCHAR" property="building3Use" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, update_time, building1_use, building2_use, building3_use
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hxscreen_water_monthlyuse
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM hxscreen_water_monthlyuse
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from hxscreen_water_monthlyuse
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HxscreenWaterMonthlyuse">
+    insert into hxscreen_water_monthlyuse
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="building1Use != null">
+        building1_use,
+      </if>
+      <if test="building2Use != null">
+        building2_use,
+      </if>
+      <if test="building3Use != null">
+        building3_use,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="building1Use != null">
+        #{building1Use,jdbcType=VARCHAR},
+      </if>
+      <if test="building2Use != null">
+        #{building2Use,jdbcType=VARCHAR},
+      </if>
+      <if test="building3Use != null">
+        #{building3Use,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HxscreenWaterMonthlyuse">
+    update hxscreen_water_monthlyuse
+    <set>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="building1Use != null">
+        building1_use = #{building1Use,jdbcType=VARCHAR},
+      </if>
+      <if test="building2Use != null">
+        building2_use = #{building2Use,jdbcType=VARCHAR},
+      </if>
+      <if test="building3Use != null">
+        building3_use = #{building3Use,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

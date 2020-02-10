@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HxscreenCameraMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HxscreenCamera">
+    <id column="camera_id" jdbcType="BIGINT" property="cameraId" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    camera_id, address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hxscreen_camera
+    where camera_id = #{cameraId,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM hxscreen_camera
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hxscreen_camera
+    where camera_id = #{cameraId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HxscreenCamera">
+    insert into hxscreen_camera
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cameraId != null">
+        camera_id,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cameraId != null">
+        #{cameraId,jdbcType=BIGINT},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HxscreenCamera">
+    update hxscreen_camera
+    <set>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where camera_id = #{cameraId,jdbcType=BIGINT}
+  </update>
+</mapper>

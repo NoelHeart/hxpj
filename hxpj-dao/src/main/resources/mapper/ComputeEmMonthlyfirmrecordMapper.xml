@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.ComputeEmMonthlyfirmrecordMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.ComputeEmMonthlyfirmrecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="scale" jdbcType="VARCHAR" property="scale" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="firm_name" jdbcType="VARCHAR" property="firmName" />
+    <result column="date_month" jdbcType="VARCHAR" property="dateMonth" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, scale, update_time, firm_name, date_month
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from compute_em_monthlyfirmrecord
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM compute_em_monthlyfirmrecord
+    ORDER BY id DESC
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from compute_em_monthlyfirmrecord
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.ComputeEmMonthlyfirmrecord">
+    insert into compute_em_monthlyfirmrecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="firmName != null">
+        firm_name,
+      </if>
+      <if test="dateMonth != null">
+        date_month,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="firmName != null">
+        #{firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dateMonth != null">
+        #{dateMonth,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertEmList">
+    INSERT INTO compute_em_monthlyfirmrecord(scale, update_time, firm_name, date_month)
+    VALUES
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.scale},#{item.updateTime},#{item.firmName},#{item.dateMonth})
+    </foreach>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.ComputeEmMonthlyfirmrecord">
+    update compute_em_monthlyfirmrecord
+    <set>
+      <if test="scale != null">
+        scale = #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="firmName != null">
+        firm_name = #{firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dateMonth != null">
+        date_month = #{dateMonth,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

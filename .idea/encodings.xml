@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hxpj-boot" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hxpj-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hxpj-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/hxpj-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/api/chartManage.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/api/compute.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/api/hxscreen.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/dashboard/admin/components/LastMonthChart.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/dashboard/admin/components/PanelGroup.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/dashboard/admin/components/WmChart.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/nested/components/yesterdayEmChart.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/nested/components/yesterdayWmChart.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen1.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen10.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen11.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen12.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen13.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen14.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen15.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen2.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen3.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen4.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen5.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen6.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen7.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen8.vue" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../../JavaProjects/vue-admin-template/src/views/screendata/hxscreen9.vue" charset="UTF-8" />
+  </component>
+</project>

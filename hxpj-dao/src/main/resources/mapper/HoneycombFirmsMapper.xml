@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HoneycombFirmsMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HoneycombFirms">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="firm" jdbcType="VARCHAR" property="firm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, firm
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from honeycomb_firms
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    from honeycomb_firms
+    <if test="firm != null and firm != ''">
+      WHERE firm LIKE CONCAT('%',#{firm},'%')
+    </if>
+  </select>
+  <select id="selectByName" resultType="com.biye.hxpj.model.HoneycombFirms">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from honeycomb_firms
+    WHERE firm=#{firm,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from honeycomb_firms
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HoneycombFirms">
+    insert into honeycomb_firms
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="firm != null">
+        firm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="firm != null">
+        #{firm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HoneycombFirms">
+    update honeycomb_firms
+    <set>
+      <if test="firm != null">
+        firm = #{firm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biye.hxpj.model.HoneycombFirms">
+    update honeycomb_firms
+    set firm = #{firm,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

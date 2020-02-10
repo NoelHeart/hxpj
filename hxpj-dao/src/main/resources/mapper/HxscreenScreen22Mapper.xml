@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HxscreenScreen22Mapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HxscreenScreen22">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="times" jdbcType="VARCHAR" property="times" />
+    <result column="build1_use" jdbcType="VARCHAR" property="build1Use" />
+    <result column="build2_use" jdbcType="VARCHAR" property="build2Use" />
+    <result column="build3_use" jdbcType="VARCHAR" property="build3Use" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, times, build1_use, build2_use, build3_use
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hxscreen_screen2_2
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM hxscreen_screen2_2
+  </select>
+    <select id="selectLast" resultMap="BaseResultMap">
+      SELECT
+      <include refid="Base_Column_List"/>
+      FROM hxscreen_screen2_2
+      ORDER BY id DESC limit 1
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from hxscreen_screen2_2
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HxscreenScreen22">
+    insert into hxscreen_screen2_2
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="times != null">
+        times,
+      </if>
+      <if test="build1Use != null">
+        build1_use,
+      </if>
+      <if test="build2Use != null">
+        build2_use,
+      </if>
+      <if test="build3Use != null">
+        build3_use,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="times != null">
+        #{times,jdbcType=VARCHAR},
+      </if>
+      <if test="build1Use != null">
+        #{build1Use,jdbcType=VARCHAR},
+      </if>
+      <if test="build2Use != null">
+        #{build2Use,jdbcType=VARCHAR},
+      </if>
+      <if test="build3Use != null">
+        #{build3Use,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HxscreenScreen22">
+    update hxscreen_screen2_2
+    <set>
+      <if test="times != null">
+        times = #{times,jdbcType=VARCHAR},
+      </if>
+      <if test="build1Use != null">
+        build1_use = #{build1Use,jdbcType=VARCHAR},
+      </if>
+      <if test="build2Use != null">
+        build2_use = #{build2Use,jdbcType=VARCHAR},
+      </if>
+      <if test="build3Use != null">
+        build3_use = #{build3Use,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

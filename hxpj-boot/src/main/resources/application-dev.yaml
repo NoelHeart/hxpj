@@ -1,0 +1,12 @@
+spring:
+  profiles: dev
+
+  datasource:
+    #使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/hxpj?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF-8
+    username: "root"
+    password: "li1998.lei"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    default-property-inclusion: non_null

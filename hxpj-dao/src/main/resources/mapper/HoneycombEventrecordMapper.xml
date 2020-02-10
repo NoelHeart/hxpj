@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HoneycombEventrecordMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HoneycombEventrecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="data_time" jdbcType="VARCHAR" property="dataTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="eventId" jdbcType="BIGINT" property="eventid" />
+    <result column="eventName" jdbcType="VARCHAR" property="eventname" />
+    <result column="cid" jdbcType="VARCHAR" property="cid" />
+    <result column="data" jdbcType="VARCHAR" property="data" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, data_time, update_time, eventId, eventName, cid, data, device_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from honeycomb_eventrecord
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM honeycomb_eventrecord
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from honeycomb_eventrecord
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HoneycombEventrecord">
+    insert into honeycomb_eventrecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dataTime != null">
+        data_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="eventid != null">
+        eventId,
+      </if>
+      <if test="eventname != null">
+        eventName,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="data != null">
+        data,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="dataTime != null">
+        #{dataTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="eventid != null">
+        #{eventid,jdbcType=BIGINT},
+      </if>
+      <if test="eventname != null">
+        #{eventname,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HoneycombEventrecord">
+    update honeycomb_eventrecord
+    <set>
+      <if test="dataTime != null">
+        data_time = #{dataTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="eventid != null">
+        eventId = #{eventid,jdbcType=BIGINT},
+      </if>
+      <if test="eventname != null">
+        eventName = #{eventname,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null">
+        data = #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HoneycombPersonApartmentroomMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HoneycombPersonApartmentroom">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="apartment_id" jdbcType="BIGINT" property="apartmentId" />
+    <result column="room_id" jdbcType="BIGINT" property="roomId" />
+    <result column="roomer" jdbcType="VARCHAR" property="roomer" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, apartment_id, room_id, roomer, phone_number
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from honeycomb_person_apartmentroom
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectRoomList" resultMap="firmResultMap">
+    SELECT * FROM honeycomb_person_apartmentroom person,firm_apartmentroom fapart
+    <where>
+      person.apartment_id=fapart.apartment_id AND person.room_id=fapart.room_id
+    </where>
+  </select>
+  <resultMap id="firmResultMap" type="com.biye.hxpj.model.HoneycombPersonApartmentroom">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="apartment_id" jdbcType="BIGINT" property="apartmentId" />
+    <result column="room_id" jdbcType="BIGINT" property="roomId" />
+    <result column="roomer" jdbcType="VARCHAR" property="roomer" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <association property="firmApartmentroom" javaType="com.biye.hxpj.model.FirmApartmentroom">
+      <id column="id" jdbcType="BIGINT" property="id" />
+      <result column="apartment_id" jdbcType="BIGINT" property="apartmentId" />
+      <result column="room_id" jdbcType="BIGINT" property="roomId" />
+      <result column="firm" jdbcType="VARCHAR" property="firm" />
+    </association>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from honeycomb_person_apartmentroom
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HoneycombPersonApartmentroom">
+    insert into honeycomb_person_apartmentroom
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="apartmentId != null">
+        apartment_id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="roomer != null">
+        roomer,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="apartmentId != null">
+        #{apartmentId,jdbcType=BIGINT},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="roomer != null">
+        #{roomer,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HoneycombPersonApartmentroom">
+    update honeycomb_person_apartmentroom
+    <set>
+      <if test="apartmentId != null">
+        apartment_id = #{apartmentId,jdbcType=BIGINT},
+      </if>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="roomer != null">
+        roomer = #{roomer,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

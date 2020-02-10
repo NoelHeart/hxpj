@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hxpj-boot" />
+        <module name="hxpj-common" />
+        <module name="hxpj-core" />
+        <module name="hxpj-dao" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hxpj" target="1.8" />
+      <module name="hxpj-boot" target="1.8" />
+      <module name="hxpj-common" target="1.8" />
+      <module name="hxpj-core" target="1.8" />
+      <module name="hxpj-dao" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

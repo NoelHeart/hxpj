@@ -1,0 +1,21 @@
+  spring:
+    profiles:
+      active: dev
+    application:
+      name: hxpj
+
+  #common config
+  deploy:
+    version: 1.0.0
+
+  #mybatis
+  mybatis:
+    mapper-locations: classpath:mapper/*.xml
+  server: 8081
+
+  #pagehelper
+  pagehelper:
+      helperDialect: mysql
+      reasonable: true
+      supportMethodsArguments: true
+      params: count=countSql

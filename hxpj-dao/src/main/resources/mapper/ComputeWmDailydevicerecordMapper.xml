@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.ComputeWmDailydevicerecordMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.ComputeWmDailydevicerecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="scale" jdbcType="VARCHAR" property="scale" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="device" jdbcType="VARCHAR" property="device" />
+    <result column="apartment_id" jdbcType="BIGINT" property="apartmentId" />
+    <result column="room_id" jdbcType="BIGINT" property="roomId" />
+    <result column="firm_name" jdbcType="VARCHAR" property="firmName" />
+    <result column="date_day" jdbcType="VARCHAR" property="dateDay" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, scale, update_time, device, apartment_id, room_id, firm_name, date_day
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from compute_wm_dailydevicerecord
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM compute_wm_dailydevicerecord
+    ORDER BY id DESC
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from compute_wm_dailydevicerecord
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.ComputeWmDailydevicerecord">
+    insert into compute_wm_dailydevicerecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="device != null">
+        device,
+      </if>
+      <if test="apartmentId != null">
+        apartment_id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="firmName != null">
+        firm_name,
+      </if>
+      <if test="dateDay != null">
+        date_day,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null">
+        #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="apartmentId != null">
+        #{apartmentId,jdbcType=BIGINT},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="firmName != null">
+        #{firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dateDay != null">
+        #{dateDay,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertList" parameterType="java.util.List">
+    INSERT INTO compute_wm_dailydevicerecord(scale, update_time, device, apartment_id, room_id, firm_name, date_day)
+    VALUES
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.scale},#{item.updateTime},#{item.device},#{item.apartmentId},#{item.roomId},#{item.firmName},#{item.dateDay})
+    </foreach>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.ComputeWmDailydevicerecord">
+    update compute_wm_dailydevicerecord
+    <set>
+      <if test="scale != null">
+        scale = #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="device != null">
+        device = #{device,jdbcType=VARCHAR},
+      </if>
+      <if test="apartmentId != null">
+        apartment_id = #{apartmentId,jdbcType=BIGINT},
+      </if>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="firmName != null">
+        firm_name = #{firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="dateDay != null">
+        date_day = #{dateDay,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

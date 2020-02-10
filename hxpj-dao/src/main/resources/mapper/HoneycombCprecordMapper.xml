@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.HoneycombCprecordMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.HoneycombCprecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="data_time" jdbcType="VARCHAR" property="dataTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="scale" jdbcType="VARCHAR" property="scale" />
+    <result column="device_id" jdbcType="VARCHAR" property="deviceId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, data_time, update_time, scale, device_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from honeycomb_cprecord
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from honeycomb_cprecord
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biye.hxpj.model.HoneycombCprecord">
+    insert into honeycomb_cprecord (id, data_time, update_time, 
+      scale, device_id)
+    values (#{id,jdbcType=BIGINT}, #{dataTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
+      #{scale,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.HoneycombCprecord">
+    insert into honeycomb_cprecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dataTime != null">
+        data_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="dataTime != null">
+        #{dataTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.HoneycombCprecord">
+    update honeycomb_cprecord
+    <set>
+      <if test="dataTime != null">
+        data_time = #{dataTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null">
+        scale = #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null">
+        device_id = #{deviceId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biye.hxpj.model.HoneycombCprecord">
+    update honeycomb_cprecord
+    set data_time = #{dataTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      scale = #{scale,jdbcType=VARCHAR},
+      device_id = #{deviceId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

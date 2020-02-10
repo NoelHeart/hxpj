@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.FirmApartmentroomMapper">
+  <resultMap id="BaseResultMap" type="com.biye.hxpj.model.FirmApartmentroom">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="apartment_id" jdbcType="BIGINT" property="apartmentId" />
+    <result column="room_id" jdbcType="BIGINT" property="roomId" />
+    <result column="firm" jdbcType="VARCHAR" property="firm" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, apartment_id, room_id, firm
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from firm_apartmentroom
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM firm_apartmentroom
+    <where>
+      <if test="firm != null and firm != ''">
+        firm LIKE CONCAT('%',#{firm},'%')
+      </if>
+      <if test="apartmentId != null and apartmentId != ''">
+        and apartment_id = #{apartmentId}
+      </if>
+    </where>
+
+  </select>
+  <select id="selectById" resultType="com.biye.hxpj.model.FirmApartmentroom">
+    select
+    <include refid="Base_Column_List" />
+    from firm_apartmentroom
+    where apartment_id=#{apartmentId,jdbcType=BIGINT} and room_id=#{roomId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from firm_apartmentroom
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.biye.hxpj.model.FirmApartmentroom">
+    insert into firm_apartmentroom (id, apartment_id, room_id, 
+      firm)
+    values (#{id,jdbcType=BIGINT}, #{apartmentId,jdbcType=BIGINT}, #{roomId,jdbcType=BIGINT}, 
+      #{firm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.biye.hxpj.model.FirmApartmentroom">
+    insert into firm_apartmentroom
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="apartmentId != null">
+        apartment_id,
+      </if>
+      <if test="roomId != null">
+        room_id,
+      </if>
+      <if test="firm != null">
+        firm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="apartmentId != null">
+        #{apartmentId,jdbcType=BIGINT},
+      </if>
+      <if test="roomId != null">
+        #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="firm != null">
+        #{firm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.FirmApartmentroom">
+    update firm_apartmentroom
+    <set>
+      <if test="apartmentId != null">
+        apartment_id = #{apartmentId,jdbcType=BIGINT},
+      </if>
+      <if test="roomId != null">
+        room_id = #{roomId,jdbcType=BIGINT},
+      </if>
+      <if test="firm != null">
+        firm = #{firm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.biye.hxpj.model.FirmApartmentroom">
+    update firm_apartmentroom
+    set apartment_id = #{apartmentId,jdbcType=BIGINT},
+      room_id = #{roomId,jdbcType=BIGINT},
+      firm = #{firm,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

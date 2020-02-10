@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.biye.hxpj.mapper.UserMapper">
+    <resultMap id="userResultMap" type="com.biye.hxpj.model.User">
+        <id column="sys_user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="sys_user_account" jdbcType="VARCHAR" property="userAccount"/>
+        <result column="sys_user_password" jdbcType="VARCHAR" property="passWord"/>
+        <result column="sys_user_name" jdbcType="VARCHAR" property="name"/>
+        <result column="sys_user_phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="sys_user_email" jdbcType="VARCHAR" property="email"/>
+        <result column="sys_user_role" jdbcType="VARCHAR" property="role"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        sys_user_id, sys_user_account, sys_user_password, sys_user_name,sys_user_phone,sys_user_email,sys_user_role
+    </sql>
+    <insert id="addUser">
+        INSERT INTO sys_user(sys_user_account,sys_user_password,sys_user_name,sys_user_phone,sys_user_email,sys_user_role)
+        VALUES (#{userAccount},#{passWord},#{name},#{phone},#{email},#{role})
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.biye.hxpj.model.User">
+        UPDATE sys_user
+        <set>
+            <if test="userAccount != null and userAccount != ''">
+                sys_user_account = #{userAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="passWord != null and passWord != ''">
+                sys_user_password = #{passWord,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null and name != ''">
+                sys_user_name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null and phone != ''">
+                sys_user_phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null and email != ''">
+                sys_user_email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="role != null and role != ''">
+                sys_user_role = #{role,jdbcType=VARCHAR},
+            </if>
+        </set>
+        WHERE sys_user_id = #{userId,jdbcType=BIGINT}
+    </update>
+    <delete id="deleteUserByPrimaryKey" parameterType="java.lang.Long">
+        delete from sys_user
+        where sys_user_id = #{userId,jdbcType=BIGINT}
+    </delete>
+    <select id="findUser" resultMap="userResultMap">
+        SELECT * FROM sys_user
+        <where>
+            <if test="userId != null">
+                `sys_user_id` = #{userId}
+            </if>
+            <if test="userAccount != null">
+                and `sys_user_account` = #{userAccount}
+            </if>
+        </where>
+    </select>
+    <select id="selectByRole" resultMap="userResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        WHERE sys_user_role = #{role,jdbcType=VARCHAR}
+    </select>
+    <select id="findAll" resultMap="userResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+    </select>
+
+</mapper>
